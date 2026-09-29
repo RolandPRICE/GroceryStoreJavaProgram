@@ -7,18 +7,28 @@
  * @author Roland Price
  * @author Ryan Stedman
  * @author James Webb
- * @author Zachary Contreras
  * @version 1.0
  */
 public class GroceryStoreProgram {
-  String[] itemNames = new String[10];
-  double[] itemPrices = new double[10];
-  int[] itemStocks = new int[10];
 
+  /**
+   * Prints out the inventory of the grocery store in the following format:
+   * Item: name Price: $price Amount in Stock: stock
+   * If names[i] is null, it will not print out that item.
+   * @param names List of item names in the grocery store
+   * @param prices List of prices for each item
+   * @param stocks List of stock amounts for each item
+   */
   public static void printInventory(String[] names,
                                     double[] prices,
                                     int[] stocks){
-
+    for (int i = 0; i < 10; i++) {
+      if (names[i] != null) {
+        System.out.println("Item: " + names[i] +
+            " Price: $" + prices[i] +
+            " Amount in Stock: " + stocks[i]);
+      }
+    }
   }
 
   /**
@@ -52,12 +62,85 @@ public class GroceryStoreProgram {
           " has been restocked with " +
           amount +
           " new items.");
-    }else{
+    }
+    else{
       System.out.println("Item not found.");
     }
   }
 
+
+  /**
+   * Main method for the GroceryStoreProgram. Houses the data for the parallel array architecture,
+   * and provides a menu for the user to display incventory, restock items, or exit the program.
+   * @param args unused
+   */
   public static void main(String[] args){
 
+    String[] itemNames = new String[10];
+    double[] itemPrices = new double[10];
+    int[] itemStocks = new int[10];
+
+    itemNames[0] = "Kleenex";
+    itemNames[1] = "Fruit Juice";
+    itemNames[2] = "Hot Dogs";
+    itemNames[3] = "Hamburger Buns";
+    itemNames[4] = "Baked Beans";
+    itemNames[5] = "Green Apples";
+    itemNames[6] = "Milk";
+    itemNames[7] = "Frosted Flakes";
+    itemNames[8] = "Clorox";
+    itemNames[9] = "Cheetos";
+
+    itemPrices[0] = 3.99;
+    itemPrices[1] = 3.79;
+    itemPrices[2] = 0.99;
+    itemPrices[3] = 1.99;
+    itemPrices[4] = 2.99;
+    itemPrices[5] = 2.89;
+    itemPrices[6] = 1.75;
+    itemPrices[7] = 4.99;
+    itemPrices[8] = 6.99;
+    itemPrices[9] = 1.49;
+
+    itemStocks[0] = 100;
+    itemStocks[1] = 60;
+    itemStocks[2] = 150;
+    itemStocks[3] = 50;
+    itemStocks[4] = 70;
+    itemStocks[5] = 201;
+    itemStocks[6] = 39;
+    itemStocks[7] = 40;
+    itemStocks[8] = 20;
+    itemStocks[9] = 100;
+
+    java.util.Scanner input = new java.util.Scanner(System.in);
+
+    while(true){
+    System.out.println("Please select a menu option: "
+        + "\n1. Display Inventory"
+        + "\n2. Restock Item"
+        + "\n3. Exit");
+        
+    int choice = input.nextInt();
+
+    if (choice == 1){
+      printInventory(itemNames, itemPrices, itemStocks);
+    }
+    else if (choice == 2) {
+      System.out.println("Enter the name of the item to restock: ");
+      input.nextLine(); 
+      String target = input.nextLine();
+      System.out.println("Enter the amount to restock: ");
+      int amount = input.nextInt();
+      restockItem(itemNames, itemStocks, target, amount);
+    }
+    else if (choice == 3) {
+      input.close();
+      break;
+    }
+    else {
+      System.out.println("Invalid choice. Please try again.");
+    }
+   }
   }
 }
