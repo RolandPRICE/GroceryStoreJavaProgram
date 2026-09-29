@@ -5,6 +5,7 @@ The program begins by displaying the user-friendly menu (shown in runtimeimages/
 Roland Price - Created class skeleton + its javadoc, and implemented restockItem + its javadoc.
 Ryan Stedman - Implemented main method + its javadoc.
 James Webb - Implemented printInventory + its javadoc.
+(I don't know why James' account [ocu19] isn't showing up as part of the collaborators, possibly because I [Roland Price] deleted the individual branches after merging with main? Either way, he most definitely contributed, I can attest to that.)
 
 The best way to compile the program is to use an online Java compiler, though I would recommend https://www.onlinegdb.com/online_java_compiler. In order to run the program, simply replace the contents of Main.java with the contents of src/GroceryStoreProgram.java, then rename Main.java to GroceryStoreProgram.java in the online compiler. After that, all you have to do is click the run button.
 
