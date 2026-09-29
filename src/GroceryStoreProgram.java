@@ -71,7 +71,7 @@ public class GroceryStoreProgram {
 
   /**
    * Main method for the GroceryStoreProgram. Houses the data for the parallel array architecture,
-   * and provides a menu for the user to display incventory, restock items, or exit the program.
+   * and provides a menu for the user to display inventory, restock items, or exit the program.
    * @param args unused
    */
   public static void main(String[] args){
@@ -116,31 +116,31 @@ public class GroceryStoreProgram {
     java.util.Scanner input = new java.util.Scanner(System.in);
 
     while(true){
-    System.out.println("Please select a menu option: "
-        + "\n1. Display Inventory"
-        + "\n2. Restock Item"
-        + "\n3. Exit");
+      System.out.println("Please select a menu option: "
+          + "\n1. Display Inventory"
+          + "\n2. Restock Item"
+          + "\n3. Exit");
         
-    int choice = input.nextInt();
+      int choice = input.nextInt();
 
-    if (choice == 1){
-      printInventory(itemNames, itemPrices, itemStocks);
+      if (choice == 1){
+        printInventory(itemNames, itemPrices, itemStocks);
+      }
+      else if (choice == 2) {
+        System.out.println("Enter the name of the item to restock: ");
+        input.nextLine();
+        String target = input.nextLine();
+        System.out.println("Enter the amount to restock: ");
+        int amount = input.nextInt();
+        restockItem(itemNames, itemStocks, target, amount);
+      }
+      else if (choice == 3) {
+        input.close();
+        break;
+      }
+      else {
+        System.out.println("Invalid choice. Please try again.");
+      }
     }
-    else if (choice == 2) {
-      System.out.println("Enter the name of the item to restock: ");
-      input.nextLine(); 
-      String target = input.nextLine();
-      System.out.println("Enter the amount to restock: ");
-      int amount = input.nextInt();
-      restockItem(itemNames, itemStocks, target, amount);
-    }
-    else if (choice == 3) {
-      input.close();
-      break;
-    }
-    else {
-      System.out.println("Invalid choice. Please try again.");
-    }
-   }
   }
 }
